@@ -1,4 +1,4 @@
-all: bin/main
+all: bin/deposit-calc
 
 build/main.d: src/main.c
 	mkdir build -p
@@ -6,11 +6,11 @@ build/main.d: src/main.c
 build/deposit.d: src/deposit.c
 	mkdir build -p
 	gcc -Wall -Werror -c -o build/deposit.o src/deposit.c -MP -MMD
-bin/main: build/main.o build/deposit.o
+bin/deposit-calc: build/main.o build/deposit.o
 	mkdir bin -p
-	gcc -Wall -Werror -o bin/main build/deposit.o build/main.o 
+	gcc -Wall -Werror -o bin/deposit-calc build/deposit.o build/main.o 
 .PHONY: clean
-clean: 
+clean: 		
 	rm build/*
 -include build/main.d
 -include build/deposit.d
