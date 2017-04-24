@@ -7,7 +7,7 @@ TFLAGS =-I thirdparty -I src
 
 test: deposit-calc-test
 	mkdir buldtest -p
-deposit-calc-test: buldtest/deposit_test.o buldtest/maint.o buldtest/deposit.o
+deposit-calc-test: buldtest/deposit_test.o buldtest/maint.o build/deposit.o
 	gcc buldtest/deposit_test.o buldtest/maint.o build/deposit.o -o bin/deposit-test
 
 buldtest/deposit_test.o: test/deposit_test.c
