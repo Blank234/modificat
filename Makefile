@@ -7,13 +7,15 @@ TFLAGS =-I thirdparty -I src
 
 test: deposit-calc-test
 	mkdir buldtest -p
-deposit-calc-test: buldtest/deposit_test.o buldtest/maint.o build/deposit.o
-	gcc buldtest/deposit_test.o buldtest/maint.o build/deposit.o -o bin/deposit-test
+deposit-calc-test: buldtest/deposit_test.o buldtest/maint.o build/deposit.o buldtest/validation_test.o
+	gcc buldtest/deposit_test.o buldtest/maint.o build/deposit.o buldtest/validation_test.o -o bin/deposit-test
 
 buldtest/deposit_test.o: test/deposit_test.c
 	gcc $(TFLAGS) $(CFLAGS) test/deposit_test.c -o buldtest/deposit_test.o
 buldtest/maint.o: test/maint.c
 	gcc $(TFLAGS) $(CFLAGS) test/maint.c -o buldtest/maint.o
+buldtest/validation_test.o: test/validation_test.c
+	gcc $(TFLAGS) $(CFLAGS) test/validation_test.c -o buldtest/validation_test.o
 
 all: bin/deposit-calc
 
@@ -29,8 +31,7 @@ bin/deposit-calc: build/main.o build/deposit.o
 clean: 		
 	rm build/*.o
 	rm build/*.d
-	rm build/test/*.o
-	rm -f test *.o
+	rm buldtest/*.o
 -include build/main.d
 -include build/deposit.d
 
