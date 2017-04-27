@@ -13,7 +13,7 @@ CTEST(TestForDeposit10000, Dni30min10pr) {
     const int sum = 10000;
     const int den=sum-sum/100*10;                       
 
-    ASSERT_EQUAL(9300, den);
+    ASSERT_EQUAL(9000, den);
 }
 
 CTEST(TestForDeposit10000, Dni120s2pr) {
