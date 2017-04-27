@@ -31,7 +31,7 @@ CTEST(ProverkaVvodaBolshe100000, CorrectDannieVklada) {
       p=1;
     }  
                            
-    ASSERT_EQUAL(0, p);
+    ASSERT_EQUAL(1, p);
 } 
 
 
